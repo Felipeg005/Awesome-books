@@ -6,13 +6,18 @@ let books =[{
 const titlePlace = document.getElementById("title");
 const authorPlace = document.getElementById("author");
 const addButton = document.getElementById("add-button");
+const form = document.getElementById('form');
 
-
-function add() {
-  let bookTitle = document.createElement("h2");
+function add(event) {
+  event.preventDefault();
   let bookAuthor = document.createElement("h3");
-  console.log("hi");
-  
+  let title = document.createElement("h2");
+  title.innerText = titlePlace.value;
+  bookAuthor.innerHTML = authorPlace.value;
+  document.getElementById('books').appendChild(title);
+  document.getElementById('books').appendChild(bookAuthor);
+  form.reset();
 }
 
-addButton.addEventListener("click", add);
+form.addEventListener('submit', add);
+
