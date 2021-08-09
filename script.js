@@ -7,15 +7,20 @@ const form = document.getElementById('form');
 
 function add(event) {
   event.preventDefault();
-  let bookAuthor = document.createElement("h3");
-  let title = document.createElement("h2");
-  let removeButton = document.createElement('button');
+  const bookContainer = document.createElement('div');
+  const bookAuthor = document.createElement("h3");
+  const title = document.createElement("h2");
+  const removeButton = document.createElement('button');
+  bookContainer.id = 'container'+`${titlePlace.value}`;
+  removeButton.id = `${titlePlace.value}`;
+  removeButton.setAttribute('onclick', `removeBook(this.id)`);
   title.innerText = titlePlace.value;
   bookAuthor.innerHTML = authorPlace.value;
   removeButton.innerHTML = 'Remove Book';
-  document.getElementById('books').appendChild(title);
-  document.getElementById('books').appendChild(bookAuthor);
-  document.getElementById('books').appendChild(removeButton);
+  document.getElementById('books').appendChild(bookContainer);
+  document.getElementById('container'+`${titlePlace.value}`).appendChild(title);
+  document.getElementById('container'+`${titlePlace.value}`).appendChild(bookAuthor);
+  document.getElementById('container'+`${titlePlace.value}`).appendChild(removeButton);
   
 
   let newBook = {
@@ -26,15 +31,25 @@ function add(event) {
   books.push(newBook);
 
   console.log(books);
-  console.log(authorPlace.value);
-  console.log(titlePlace.value);
 
   form.reset();
 }
 
-function removeBook() {
 
+function removeBook(buttonId) {
+  
+  const bookToRemove = document.getElementById('container'+`${buttonId}`);
+  bookToRemove.parentNode.removeChild(bookToRemove);
+  
+  for (let i = 0; i < books.length; i += 1) {
+
+  if (books[i].title === buttonId) {
+    books.splice(i, 1);
+    console.log(books);
+    break;
+  }
+}
 }
 
 form.addEventListener('submit', add);
-
+// removeButton.addEventListener('click', removeBook);
