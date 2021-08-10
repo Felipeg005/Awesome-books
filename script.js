@@ -10,7 +10,7 @@ class Book {
   }
 
   displayBook() {
-    console.log(`${this.title},${this.author}.`)
+    console.log(`${this.title},${this.author}..`)
   }
 }
 
