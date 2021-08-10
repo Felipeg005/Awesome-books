@@ -22,7 +22,8 @@ function add(event) {
   document.getElementById(`container${titlePlace.value}`).appendChild(bookAuthor);
   document.getElementById(`container${titlePlace.value}`).appendChild(removeButton);
   document.getElementById(`container${titlePlace.value}`).appendChild(separateLine);
-  const newBook = { title: titlePlace.value, 
+  const newBook = {
+    title: titlePlace.value,
     author: authorPlace.value,
   };
   books.push(newBook);
