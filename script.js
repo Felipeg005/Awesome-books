@@ -1,35 +1,38 @@
 const books = [];
-const titlePlace = document.getElementById('title');
-const authorPlace = document.getElementById('author');
+const titlePlace = document.getElementById('title').value;
+const authorPlace = document.getElementById('author').value;
 
 class Book {
   constructor(title, author) {
-    this.title = titlePlace.value;
-    this.author = authorPlace.value;
+    this.title = title;
+    this.author = author;
   }
   add(event) {
+    event.preventDefault();
     const bookContainer = document.createElement('div');
     const bookAuthor = document.createElement('h3');
     const title = document.createElement('h2');
     const removeButton = document.createElement('button');
     const separateLine = document.createElement('hr');
-    bookContainer.id = `container${title}`;
-    removeButton.id = `${title}`;
+    bookContainer.id = `container${this.title}`;
+    removeButton.id = `${this.title}`;
     removeButton.setAttribute('onclick', 'book.removeBook(this.id)');
-    title.innerText = title;
-    bookAuthor.innerHTML = author;
+    title.innerText = `${this.title}`;
+    bookAuthor.innerHTML = `${this.author}`;
     removeButton.innerHTML = 'Remove Book';
     const booksDiv = document.getElementById('books');
     booksDiv.insertBefore(bookContainer, booksDiv.firstChild);
-    document.getElementById(`container${title}`).appendChild(title);
-    document.getElementById(`container${title}`).appendChild(bookAuthor);
-    document.getElementById(`container${title}`).appendChild(removeButton);
-    document.getElementById(`container${title}`).appendChild(separateLine);
-    const newBook = new Book(title, author);
+    document.getElementById(`container${this.title}`).appendChild(title);
+    document.getElementById(`container${this.title}`).appendChild(bookAuthor);
+    document.getElementById(`container${this.title}`).appendChild(removeButton);
+    document.getElementById(`container${this.title}`).appendChild(separateLine);
+    const newBook = new Book(`${this.title}`, `${this.author}`);
     books.push(newBook);
     localStorage.setItem('bookStorage', JSON.stringify(books));
     form.reset();
-    event.preventDefault();
+    console.log(this.name);
+    console.log(this.title);
+    console.log(this.author);
   }
 
   /* eslint-disable */removeBook(buttonId) {
@@ -47,9 +50,8 @@ class Book {
 }
 
 const form = document.getElementById('form');
+const book = new Book('yyyyy', 'zzzzz');
 
-
-const book = new Book(titlePlace.value, authorPlace.value);
 
 
 
