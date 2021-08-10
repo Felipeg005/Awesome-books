@@ -1,6 +1,19 @@
 const books = [];
+
 const titlePlace = document.getElementById('title');
 const authorPlace = document.getElementById('author');
+
+class Book {
+  constructor(title, author ) {
+    this.title = title;
+    this.author = author;
+  }
+
+  displayBook() {
+    console.log(`${this.title},${this.author}`)
+  }
+}
+
 const form = document.getElementById('form');
 
 function add(event) {
@@ -22,14 +35,16 @@ function add(event) {
   document.getElementById(`container${titlePlace.value}`).appendChild(bookAuthor);
   document.getElementById(`container${titlePlace.value}`).appendChild(removeButton);
   document.getElementById(`container${titlePlace.value}`).appendChild(separateLine);
-  const newBook = {
-    title: titlePlace.value,
-    author: authorPlace.value,
-  };
+  
+  const newBook = new Book(titlePlace.value, authorPlace.value);
+  newBook.displayBook()
+
   books.push(newBook);
   localStorage.setItem('bookStorage', JSON.stringify(books));
   form.reset();
 }
+
+
 
 /* eslint-disable */function removeBook(buttonId) {
   const bookToRemove = document.getElementById('container'+`${buttonId}`);
