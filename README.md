@@ -11,7 +11,7 @@
 
 ## Live Demo
 
-[Visit Live Demo Link](https://felipeg005.github.io/Awesome-Books/)
+[Visit Live Demo Link](https://felipeg005.github.io/Awesome-books/)
 
 
 ## Getting Started
