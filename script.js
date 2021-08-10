@@ -12,7 +12,7 @@ function add(event) {
   const separateLine = document.createElement('hr');
   bookContainer.id = `container${titlePlace.value}`;
   removeButton.id = `${titlePlace.value}`;
-  removeButton.setAttribute('onclick', `removeBook(this.id)`);
+  removeButton.setAttribute('onclick', 'removeBook(this.id)');
   title.innerText = titlePlace.value;
   bookAuthor.innerHTML = authorPlace.value;
   removeButton.innerHTML = 'Remove Book';
@@ -22,10 +22,9 @@ function add(event) {
   document.getElementById(`container${titlePlace.value}`).appendChild(bookAuthor);
   document.getElementById(`container${titlePlace.value}`).appendChild(removeButton);
   document.getElementById(`container${titlePlace.value}`).appendChild(separateLine);
-  const newBook = {
-    title: titlePlace.value, 
+  const newBook = { title: titlePlace.value, 
     author: authorPlace.value,
-  }
+  };
   books.push(newBook);
   localStorage.setItem('bookStorage', JSON.stringify(books));
   form.reset();
