@@ -2,7 +2,7 @@ const form = document.getElementById('form');
 class BookArray {
   constructor() {
     this.books = [];
-    this.bookStorage;
+    this.bookStorage = JSON.parse(localStorage.getItem('bookStorage'));
   }
 
   Add(item) {
@@ -25,18 +25,17 @@ class BookArray {
         title.innerText = this.bookStorage[i].title;
         bookAuthor.innerHTML = this.bookStorage[i].author;
         removeButton.innerHTML = 'Remove Book';
-        const booksDiv = document.getElementById('books')
+        const booksDiv = document.getElementById('books');
         booksDiv.insertBefore(bookContainer, booksDiv.firstChild);
         document.getElementById(`container${this.bookStorage[i].title}`).appendChild(title);
         document.getElementById(`container${this.bookStorage[i].title}`).appendChild(bookAuthor);
         document.getElementById(`container${this.bookStorage[i].title}`).appendChild(removeButton);
         document.getElementById(`container${this.bookStorage[i].title}`).appendChild(separateLine);
-        BooksArray.Add(this.bookStorage[i]);
+        /* eslint-disable */BooksArray.Add(this.bookStorage[i]);
       }
     }
   }
 }
-
 const BooksArray = new BookArray();
 
 // const form = document.getElementById('form');
@@ -47,15 +46,15 @@ class Book {
     this.author = document.getElementById('author').value;
   }
 
-  preventDefault(event) {
-    event.preventDefault();
-  }
+  // preventDefault(event) {
+  //   event.preventDefault();
+  // }
 
-  add() {
+  add(e) {
     this.title = document.getElementById('title').value;
     this.author = document.getElementById('author').value;
     console.log(this.title);
-    this.preventDefault;
+    e.preventDefault();
     // const titlePlace = document.getElementById('title');
     // const authorPlace = document.getElementById('author');
     const bookContainer = document.createElement('div');
@@ -76,7 +75,7 @@ class Book {
     document.getElementById(`container${this.title}`).appendChild(removeButton);
     document.getElementById(`container${this.title}`).appendChild(separateLine);
     const newBook = new Book(this.title, this.author);
-    BooksArray.Add (newBook);
+    BooksArray.Add(newBook);
     form.reset();
     console.log(this.title);
   }
@@ -98,5 +97,5 @@ const saveBook = new Book();
 document.addEventListener('DOMContentLoaded', BooksArray.Get);
 form.addEventListener('submit', (...e) => {
   saveBook.add(...e);
-  saveBook.preventDefault(...e);
 });
+
