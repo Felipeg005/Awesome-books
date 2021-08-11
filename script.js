@@ -47,7 +47,6 @@ class Book {
   add(e) {
     this.title = document.getElementById('title').value;
     this.author = document.getElementById('author').value;
-    console.log(this.title);
     e.preventDefault();
     const bookContainer = document.createElement('div');
     const bookAuthor = document.createElement('h3');
@@ -69,7 +68,6 @@ class Book {
     const newBook = new Book(this.title, this.author);
     BooksArray.Add(newBook);
     form.reset();
-    console.log(this.title);
   }
 
   /* eslint-disable */removeBook(buttonId) {
