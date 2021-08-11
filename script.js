@@ -1,7 +1,3 @@
-const form = document.getElementById('form');
-const saveBook = new Book();
-const BooksArray = new BookArray();
-
 class BookArray {
   constructor() {
     this.books = [];
@@ -81,6 +77,10 @@ class Book {
     }
   }
 }
+
+const form = document.getElementById('form');
+const saveBook = new Book();
+const BooksArray = new BookArray();
 
 document.addEventListener('DOMContentLoaded', BooksArray.Get);
 form.addEventListener('submit', (...e) => {
