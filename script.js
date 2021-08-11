@@ -38,25 +38,17 @@ class BookArray {
 }
 const BooksArray = new BookArray();
 
-// const form = document.getElementById('form');
-
 class Book {
   constructor() {
     this.title = document.getElementById('title').value;
     this.author = document.getElementById('author').value;
   }
 
-  // preventDefault(event) {
-  //   event.preventDefault();
-  // }
-
   add(e) {
     this.title = document.getElementById('title').value;
     this.author = document.getElementById('author').value;
     console.log(this.title);
     e.preventDefault();
-    // const titlePlace = document.getElementById('title');
-    // const authorPlace = document.getElementById('author');
     const bookContainer = document.createElement('div');
     const bookAuthor = document.createElement('h3');
     const title = document.createElement('h2');
