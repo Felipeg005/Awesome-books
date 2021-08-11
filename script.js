@@ -1,38 +1,43 @@
+
 class BookArray {
   constructor() {
     this.books = [];
-    this.bookStorage = JSON.parse(localStorage.getItem('bookStorage'));
+    this.bookStorage;
   }
 
   Add(item) {
     this.books.push(item);
     localStorage.setItem('bookStorage', JSON.stringify(this.books));
   }
-  Get(){
-    if (BooksArray.bookStorage) {
-      for (let i = 0; i < BooksArray.bookStorage.length; i += 1) {
+
+  Get() {
+    this.bookStorage = JSON.parse(localStorage.getItem('bookStorage'))
+    if (this.bookStorage) {
+      for (let i = 0; i < this.bookStorage.length; i += 1) {
         const bookContainer = document.createElement('div');
         const bookAuthor = document.createElement('h3');
         const title = document.createElement('h2');
         const removeButton = document.createElement('button');
         const separateLine = document.createElement('hr');
-        bookContainer.id = `container${BooksArray.bookStorage[i].title}`;
-        removeButton.id = `${BooksArray.bookStorage[i].title}`;
+        bookContainer.id = `container${this.bookStorage[i].title}`;
+        removeButton.id = `${this.bookStorage[i].title}`;
         removeButton.setAttribute('onclick', 'saveBook.removeBook(this.id)');
-        title.innerText = BooksArray.bookStorage[i].title;
-        bookAuthor.innerHTML = BooksArray.bookStorage[i].author;
+        title.innerText = this.bookStorage[i].title;
+        bookAuthor.innerHTML = this.bookStorage[i].author;
         removeButton.innerHTML = 'Remove Book';
         const booksDiv = document.getElementById('books')
         booksDiv.insertBefore(bookContainer, booksDiv.firstChild);
-        document.getElementById(`container${BooksArray.bookStorage[i].title}`).appendChild(title);
-        document.getElementById(`container${BooksArray.bookStorage[i].title}`).appendChild(bookAuthor);
-        document.getElementById(`container${BooksArray.bookStorage[i].title}`).appendChild(removeButton);
-        document.getElementById(`container${BooksArray.bookStorage[i].title}`).appendChild(separateLine);
-        BooksArray.Add(BooksArray.bookStorage[i]);
+        document.getElementById(`container${this.bookStorage[i].title}`).appendChild(title);
+        document.getElementById(`container${this.bookStorage[i].title}`).appendChild(bookAuthor);
+        document.getElementById(`container${this.bookStorage[i].title}`).appendChild(removeButton);
+        document.getElementById(`container${this.bookStorage[i].title}`).appendChild(separateLine);
+        BooksArray.Add(this.bookStorage[i]);
       }
     }
   }
 }
+
+const BooksArray = new BookArray();
 
 class Book {
   constructor(title, author) {
@@ -62,7 +67,6 @@ class Book {
     document.getElementById(`container${titlePlace.value}`).appendChild(separateLine);
     const newBook = new Book(titlePlace.value, authorPlace.value);
     BooksArray.Add (newBook);
-    books.push(newBook);
     form.reset();
   }
   /* eslint-disable */removeBook(buttonId) {
@@ -80,7 +84,6 @@ class Book {
 
 const form = document.getElementById('form');
 const saveBook = new Book();
-const BooksArray = new BookArray();
 
 document.addEventListener('DOMContentLoaded', BooksArray.Get);
 form.addEventListener('submit', (...e) => {
