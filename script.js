@@ -1,4 +1,4 @@
-const form = document.getElementById('form');
+/* eslint-disable */const form = document.getElementById('form');
 class BookArray {
   constructor() {
     this.books = [];
