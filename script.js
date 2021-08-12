@@ -23,21 +23,21 @@ class BookArray {
     if (this.bookStorage) {
       for (let i = 0; i < this.bookStorage.length; i += 1) {
         const bookContainer = document.createElement('div');
-        const classes = 'border overflow-auto w-25 h-100 p-3'.split(' ');
+        const classes = 'd-flex column bd-highlight border'.split(' ');
         bookContainer.classList.add(...classes);
         const bookAuthor = document.createElement('h3');
         const title = document.createElement('h2');
-        bookAuthor.classList.add('text-break', 'text-capitalize', 'fs-6');
-        title.classList.add('text-break', 'text-uppercase', 'fs-5');
+        bookAuthor.classList.add('d-flex', 'align-items-center', 'm-1', 'col', 'p-2', 'bd-highlight', 'text-break', 'text-capitalize', 'fs-6');
+        title.classList.add('d-flex', 'align-items-center', 'p-2', 'bd-highlight', 'text-uppercase', 'fs-5');
         const removeButton = document.createElement('button');
         const separateLine = document.createElement('hr');
         bookContainer.id = `container${this.bookStorage[i].title}`;
         removeButton.id = `${this.bookStorage[i].title}`;
         removeButton.setAttribute('onclick', 'removeBook(this.id)');
         title.innerText = this.bookStorage[i].title;
-        bookAuthor.innerHTML = this.bookStorage[i].author;
+        bookAuthor.innerHTML = `By ${this.bookStorage[i].author}`;
         removeButton.innerHTML = 'Remove Book';
-        removeButton.classList.add('text-white', 'btn', 'btn-danger');
+        removeButton.classList.add('m-1', 'text-white', 'btn', 'btn-danger', 'ml-auto', 'p-2', 'bd-highlight');
         const booksDiv = document.getElementById('books');
         booksDiv.insertBefore(bookContainer, booksDiv.firstChild);
         document.getElementById(`container${this.bookStorage[i].title}`).appendChild(title);
@@ -62,13 +62,13 @@ class Book {
     this.author = document.getElementById('author').value;
     e.preventDefault();
     const bookContainer = document.createElement('div');
-    const classes = 'border overflow-auto w-25 h-100 p-3'.split(' ');
+    const classes = 'd-flex column bd-highlight border'.split(' ');
     bookContainer.classList.add(...classes);
     bookContainer.classList.add('book-card');
     const bookAuthor = document.createElement('h3');
     const title = document.createElement('h2');
-    bookAuthor.classList.add('text-break', 'text-capitalize', 'fs-6');
-    title.classList.add('text-break', 'text-uppercase', 'fs-5');
+    bookAuthor.classList.add('d-flex', 'align-items-center', 'm-1', 'col', 'p-2', 'bd-highlight', 'text-break', 'text-capitalize', 'fs-6');
+    title.classList.add('d-flex', 'align-items-center', 'p-2', 'bd-highlight', 'text-uppercase', 'fs-5');
     const removeButton = document.createElement('button');
     const separateLine = document.createElement('hr');
     bookContainer.id = `container${this.title}`;
@@ -77,7 +77,7 @@ class Book {
     title.innerText = this.title;
     bookAuthor.innerHTML = this.author;
     removeButton.innerHTML = 'Remove Book';
-    removeButton.classList.add('text-white', 'btn', 'btn-danger');
+    removeButton.classList.add('m-1', 'text-white', 'btn', 'btn-danger', 'ml-auto', 'p-2', 'bd-highlight');
     const booksDiv = document.getElementById('books');
     booksDiv.insertBefore(bookContainer, booksDiv.firstChild);
     document.getElementById(`container${this.title}`).appendChild(title);
