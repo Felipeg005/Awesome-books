@@ -1,4 +1,4 @@
-/* eslint-disable */const form = document.getElementById('form');
+const form = document.getElementById('form');
 class BookArray {
   constructor() {
     this.books = [];
@@ -31,7 +31,7 @@ class BookArray {
         document.getElementById(`container${this.bookStorage[i].title}`).appendChild(bookAuthor);
         document.getElementById(`container${this.bookStorage[i].title}`).appendChild(removeButton);
         document.getElementById(`container${this.bookStorage[i].title}`).appendChild(separateLine);
-        /* eslint-disable */BooksArray.Add(this.bookStorage[i]);
+        BooksArray.Add(this.bookStorage[i]);
       }
     }
   }
@@ -70,7 +70,7 @@ class Book {
     form.reset();
   }
 
-  /* eslint-disable */removeBook(buttonId) {
+  removeBook(buttonId) {
     const bookToRemove = document.getElementById('container'+`${buttonId}`);
     bookToRemove.parentNode.removeChild(bookToRemove);
     for (let i = 0; i < BooksArray.books.length; i += 1) {
