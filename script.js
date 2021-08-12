@@ -6,11 +6,19 @@ class BookArray {
   }
 
   Add(item) {
+    this.bookStorage = JSON.parse(localStorage.getItem('bookStorage'));
+    this.books = [];
+    if (this.bookStorage) {
+      for (let i = 0; i < this.bookStorage.length; i += 1) {
+        this.books.push(this.bookStorage[i]);
+      }
+    }
     this.books.push(item);
     localStorage.setItem('bookStorage', JSON.stringify(this.books));
   }
 
   Get() {
+    this.books = [];
     this.bookStorage = JSON.parse(localStorage.getItem('bookStorage'));
     if (this.bookStorage) {
       for (let i = 0; i < this.bookStorage.length; i += 1) {
@@ -21,7 +29,7 @@ class BookArray {
         const separateLine = document.createElement('hr');
         bookContainer.id = `container${this.bookStorage[i].title}`;
         removeButton.id = `${this.bookStorage[i].title}`;
-        removeButton.setAttribute('onclick', 'saveBook.removeBook(this.id)');
+        removeButton.setAttribute('onclick', 'removeBook(this.id)');
         title.innerText = this.bookStorage[i].title;
         bookAuthor.innerHTML = this.bookStorage[i].author;
         removeButton.innerHTML = 'Remove Book';
@@ -31,7 +39,7 @@ class BookArray {
         document.getElementById(`container${this.bookStorage[i].title}`).appendChild(bookAuthor);
         document.getElementById(`container${this.bookStorage[i].title}`).appendChild(removeButton);
         document.getElementById(`container${this.bookStorage[i].title}`).appendChild(separateLine);
-        BooksArray.Add(this.bookStorage[i]);
+        this.books.push(this.bookStorage[i]);
       }
     }
   }
@@ -55,7 +63,7 @@ class Book {
     const separateLine = document.createElement('hr');
     bookContainer.id = `container${this.title}`;
     removeButton.id = `${this.title}`;
-    removeButton.setAttribute('onclick', 'saveBook.removeBook(this.id)');
+    removeButton.setAttribute('onclick', 'removeBook(this.id)');
     title.innerText = this.title;
     bookAuthor.innerHTML = this.author;
     removeButton.innerHTML = 'Remove Book';
@@ -69,23 +77,26 @@ class Book {
     BooksArray.Add(newBook);
     form.reset();
   }
+}
+const saveBook = new Book();
 
-  removeBook(buttonId) {
-    const bookToRemove = document.getElementById('container'+`${buttonId}`);
+function removeBook(buttonId) {
+  if (buttonId) {
+    const bookToRemove = document.getElementById(`container${buttonId}`);
     bookToRemove.parentNode.removeChild(bookToRemove);
-    for (let i = 0; i < BooksArray.books.length; i += 1) {
-      if (BooksArray.books[i].title === buttonId) {
-        BooksArray.books.splice(i, 1);
-        localStorage.setItem('bookStorage', JSON.stringify(BooksArray.books));
+    for (let i = 0; i < BooksArray.bookStorage.length; i += 1) {
+      if (BooksArray.bookStorage[i].title === buttonId) {
+        BooksArray.bookStorage.splice(i, 1);
+        localStorage.setItem('bookStorage', JSON.stringify(BooksArray.bookStorage));
         break;
       }
     }
   }
 }
-const saveBook = new Book();
 
+removeBook();
+/* eslint max-classes-per-file: ["error", 2] */
 document.addEventListener('DOMContentLoaded', BooksArray.Get);
 form.addEventListener('submit', (...e) => {
   saveBook.add(...e);
 });
-
