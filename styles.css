@@ -5,13 +5,6 @@ body {
  align-items: center
 }
 
-.book-card {
-  /* border: 1px solid black;
-  padding: 12px;
-  width: 50%;
-  text-align: center; */
-}
-
 #books {
   max-height: 60vh;
   max-width: 60vw;
