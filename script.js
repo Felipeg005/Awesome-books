@@ -1,4 +1,5 @@
-/* eslint-disable */const form = document.getElementById('form');
+const form = document.getElementById('form');
+/* eslint max-classes-per-file: ["error", 2] */
 class BookArray {
   constructor() {
     this.books = [];
@@ -31,14 +32,12 @@ class BookArray {
         document.getElementById(`container${this.bookStorage[i].title}`).appendChild(bookAuthor);
         document.getElementById(`container${this.bookStorage[i].title}`).appendChild(removeButton);
         document.getElementById(`container${this.bookStorage[i].title}`).appendChild(separateLine);
-        /* eslint-disable */BooksArray.Add(this.bookStorage[i]);
+        BooksArray.Add(this.bookStorage[i]);
       }
     }
   }
 }
 const BooksArray = new BookArray();
-
-// const form = document.getElementById('form');
 
 class Book {
   constructor() {
@@ -46,17 +45,10 @@ class Book {
     this.author = document.getElementById('author').value;
   }
 
-  // preventDefault(event) {
-  //   event.preventDefault();
-  // }
-
   add(e) {
     this.title = document.getElementById('title').value;
     this.author = document.getElementById('author').value;
-    console.log(this.title);
     e.preventDefault();
-    // const titlePlace = document.getElementById('title');
-    // const authorPlace = document.getElementById('author');
     const bookContainer = document.createElement('div');
     const bookAuthor = document.createElement('h3');
     const title = document.createElement('h2');
@@ -77,11 +69,10 @@ class Book {
     const newBook = new Book(this.title, this.author);
     BooksArray.Add(newBook);
     form.reset();
-    console.log(this.title);
   }
 
-  /* eslint-disable */removeBook(buttonId) {
-    const bookToRemove = document.getElementById('container'+`${buttonId}`);
+  removeBook(buttonId) {
+    const bookToRemove = document.getElementById(`container${buttonId}`);
     bookToRemove.parentNode.removeChild(bookToRemove);
     for (let i = 0; i < BooksArray.books.length; i += 1) {
       if (BooksArray.books[i].title === buttonId) {
