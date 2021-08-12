@@ -6,6 +6,13 @@ class BookArray {
   }
 
   Add(item) {
+    this.bookStorage = JSON.parse(localStorage.getItem('bookStorage'));
+    this.books = [];
+    if(this.bookStorage){
+      for (let i = 0; i < this.bookStorage.length; i += 1){
+        this.books.push(this.bookStorage[i]);
+      }
+    }
     this.books.push(item);
     localStorage.setItem('bookStorage', JSON.stringify(this.books));
   }
@@ -74,6 +81,7 @@ class Book {
 const saveBook = new Book();
 
 function removeBook(buttonId) {
+  if(buttonId){
   const bookToRemove = document.getElementById(`container${buttonId}`);
   bookToRemove.parentNode.removeChild(bookToRemove);
   for (let i = 0; i < BooksArray.bookStorage.length; i += 1) {
@@ -82,13 +90,11 @@ function removeBook(buttonId) {
       localStorage.setItem('bookStorage', JSON.stringify(BooksArray.bookStorage));
       break;
     }
-  }
+  }}
 }
 
 removeBook();
-
 /* eslint max-classes-per-file: ["error", 2] */
-
 document.addEventListener('DOMContentLoaded', BooksArray.Get);
 form.addEventListener('submit', (...e) => {
   saveBook.add(...e);
