@@ -8,12 +8,10 @@ class BookArray {
   Add(item) {
     this.books.push(item);
     localStorage.setItem('bookStorage', JSON.stringify(this.books));
-    console.log(this.books);
   }
 
   Get() {
     this.books = [];
-    console.log(this.books);
     this.bookStorage = JSON.parse(localStorage.getItem('bookStorage'));
     if (this.bookStorage) {
       for (let i = 0; i < this.bookStorage.length; i += 1) {
@@ -35,7 +33,6 @@ class BookArray {
         document.getElementById(`container${this.bookStorage[i].title}`).appendChild(removeButton);
         document.getElementById(`container${this.bookStorage[i].title}`).appendChild(separateLine);
         this.books.push(this.bookStorage[i]);
-        console.log(this.books);
       }
     }
   }
@@ -77,7 +74,6 @@ class Book {
 const saveBook = new Book();
 
 function removeBook(buttonId) {
-  console.log(BooksArray.books);
   const bookToRemove = document.getElementById(`container${buttonId}`);
   bookToRemove.parentNode.removeChild(bookToRemove);
   for (let i = 0; i < BooksArray.bookStorage.length; i += 1) {
@@ -88,6 +84,8 @@ function removeBook(buttonId) {
     }
   }
 }
+
+removeBook();
 
 /* eslint max-classes-per-file: ["error", 2] */
 
