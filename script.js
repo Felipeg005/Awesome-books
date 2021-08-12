@@ -90,7 +90,7 @@ function removeBook(buttonId) {
         localStorage.setItem('bookStorage', JSON.stringify(BooksArray.bookStorage));
         break;
       }
-    } 
+    }
   }
 }
 
