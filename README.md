@@ -35,6 +35,12 @@ To get a local copy up and running follow these simple example steps
 - Twitter: [@twitterhandle](https://twitter.com/JuanFGT05)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/juan-felipe-gomez-tobon/)
 
+👤 **Ngenzi Herve**
+
+- Website: [Visit](https://ngenziherve.me)
+- Github: [@muhenge](https://github.com/muhenge)
+- LinkedIn: [Visit](https://www.linkedin.com/in/mugunga-herve-a62a0ab9/)
+
 ## Show your support
 
 Give a ⭐️ if you like this project!
