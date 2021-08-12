@@ -23,8 +23,13 @@ class BookArray {
     if (this.bookStorage) {
       for (let i = 0; i < this.bookStorage.length; i += 1) {
         const bookContainer = document.createElement('div');
+        const classes = 'border overflow-auto w-25 h-100 p-3'.split(' ');
+        bookContainer.classList.add(...classes);
         const bookAuthor = document.createElement('h3');
         const title = document.createElement('h2');
+        bookAuthor.classList.add('text-break','text-capitalize','fs-6')
+        title.classList.add('text-break','text-uppercase','fs-5')
+
         const removeButton = document.createElement('button');
         const separateLine = document.createElement('hr');
         bookContainer.id = `container${this.bookStorage[i].title}`;
@@ -33,6 +38,7 @@ class BookArray {
         title.innerText = this.bookStorage[i].title;
         bookAuthor.innerHTML = this.bookStorage[i].author;
         removeButton.innerHTML = 'Remove Book';
+        removeButton.classList.add('text-white','btn','btn-danger')
         const booksDiv = document.getElementById('books');
         booksDiv.insertBefore(bookContainer, booksDiv.firstChild);
         document.getElementById(`container${this.bookStorage[i].title}`).appendChild(title);
@@ -57,6 +63,7 @@ class Book {
     this.author = document.getElementById('author').value;
     e.preventDefault();
     const bookContainer = document.createElement('div');
+    bookContainer.classList.add('book-card');
     const bookAuthor = document.createElement('h3');
     const title = document.createElement('h2');
     const removeButton = document.createElement('button');
