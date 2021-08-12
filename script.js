@@ -8,8 +8,8 @@ class BookArray {
   Add(item) {
     this.bookStorage = JSON.parse(localStorage.getItem('bookStorage'));
     this.books = [];
-    if(this.bookStorage){
-      for (let i = 0; i < this.bookStorage.length; i += 1){
+    if (this.bookStorage) {
+      for (let i = 0; i < this.bookStorage.length; i += 1) {
         this.books.push(this.bookStorage[i]);
       }
     }
@@ -81,16 +81,17 @@ class Book {
 const saveBook = new Book();
 
 function removeBook(buttonId) {
-  if(buttonId){
-  const bookToRemove = document.getElementById(`container${buttonId}`);
-  bookToRemove.parentNode.removeChild(bookToRemove);
-  for (let i = 0; i < BooksArray.bookStorage.length; i += 1) {
-    if (BooksArray.bookStorage[i].title === buttonId) {
-      BooksArray.bookStorage.splice(i, 1);
-      localStorage.setItem('bookStorage', JSON.stringify(BooksArray.bookStorage));
-      break;
-    }
-  }}
+  if (buttonId) {
+    const bookToRemove = document.getElementById(`container${buttonId}`);
+    bookToRemove.parentNode.removeChild(bookToRemove);
+    for (let i = 0; i < BooksArray.bookStorage.length; i += 1) {
+      if (BooksArray.bookStorage[i].title === buttonId) {
+        BooksArray.bookStorage.splice(i, 1);
+        localStorage.setItem('bookStorage', JSON.stringify(BooksArray.bookStorage));
+        break;
+      }
+    } 
+  }
 }
 
 removeBook();
