@@ -1,3 +1,13 @@
+// eslint-disable-next-line no-undef
+const { DateTime } = luxon;
+
+const timeP = document.createElement('p');
+timeP.classList.add('align-self-end');
+
+timeP.textContent = DateTime.now().toLocaleString(DateTime.DATETIME_MED);
+
+document.getElementById('date-time').appendChild(timeP);
+
 const form = document.getElementById('form');
 let count = 0;
 
