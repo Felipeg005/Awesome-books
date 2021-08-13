@@ -6,7 +6,7 @@ body {
 }
 
 #books {
-  max-height: 60vh;
+  max-height: 50vh;
   max-width: 80vw;
   overflow-y: scroll;
 }
