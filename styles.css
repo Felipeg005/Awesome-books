@@ -1,3 +1,12 @@
-.body {
-  width: 100vw;
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#books {
+  max-height: 50vh;
+  max-width: 80vw;
+  overflow-y: scroll;
 }
