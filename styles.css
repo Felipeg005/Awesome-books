@@ -5,8 +5,31 @@ body {
   align-items: center;
 }
 
+.header {
+  width: 100vw;
+}
+
 #books {
   max-height: 50vh;
   max-width: 80vw;
   overflow-y: scroll;
+}
+
+.contact {
+  width: 50vw;
+  height: 60vh;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(206, 205, 205);
+  color: black;
+  text-align: center;
+}
+
+.nav-item {
+  cursor: pointer;
 }
