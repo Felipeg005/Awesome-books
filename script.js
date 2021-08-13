@@ -1,4 +1,16 @@
 const form = document.getElementById('form');
+let count = 0;
+
+function changeBgColor(bookContainer) {
+  if (count === 0) {
+    bookContainer.style.backgroundColor = 'rgb(245 245 245)';
+    count += 1;
+  } else {
+    bookContainer.style.backgroundColor = '#ffffff';
+    count -= 1;
+  }
+}
+
 class BookArray {
   constructor() {
     this.books = [];
@@ -18,8 +30,8 @@ class BookArray {
   }
 
   Get() {
-    this.books = [];
     this.bookStorage = JSON.parse(localStorage.getItem('bookStorage'));
+    this.books = JSON.parse(localStorage.getItem('bookStorage'));
     if (this.bookStorage) {
       for (let i = 0; i < this.bookStorage.length; i += 1) {
         const bookContainer = document.createElement('div');
@@ -28,7 +40,7 @@ class BookArray {
         const bookAuthor = document.createElement('h3');
         const title = document.createElement('h2');
         bookAuthor.classList.add('d-flex', 'align-items-center', 'm-1', 'col', 'p-2', 'bd-highlight', 'text-break', 'text-capitalize', 'fs-6');
-        title.classList.add('d-flex', 'align-items-center', 'p-2', 'bd-highlight', 'text-uppercase', 'fs-5');
+        title.classList.add('m-1', 'd-flex', 'align-items-center', 'p-2', 'bd-highlight', 'text-uppercase', 'fs-5');
         const removeButton = document.createElement('button');
         const separateLine = document.createElement('hr');
         bookContainer.id = `container${this.bookStorage[i].title}`;
@@ -45,6 +57,7 @@ class BookArray {
         document.getElementById(`container${this.bookStorage[i].title}`).appendChild(removeButton);
         document.getElementById(`container${this.bookStorage[i].title}`).appendChild(separateLine);
         this.books.push(this.bookStorage[i]);
+        changeBgColor(bookContainer);
       }
     }
   }
@@ -57,10 +70,9 @@ class Book {
     this.author = document.getElementById('author').value;
   }
 
-  add(e) {
+  add() {
     this.title = document.getElementById('title').value;
     this.author = document.getElementById('author').value;
-    e.preventDefault();
     const bookContainer = document.createElement('div');
     const classes = 'd-flex column bd-highlight border'.split(' ');
     bookContainer.classList.add(...classes);
@@ -68,14 +80,14 @@ class Book {
     const bookAuthor = document.createElement('h3');
     const title = document.createElement('h2');
     bookAuthor.classList.add('d-flex', 'align-items-center', 'm-1', 'col', 'p-2', 'bd-highlight', 'text-break', 'text-capitalize', 'fs-6');
-    title.classList.add('d-flex', 'align-items-center', 'p-2', 'bd-highlight', 'text-uppercase', 'fs-5');
+    title.classList.add('m-1', 'd-flex', 'align-items-center', 'p-2', 'bd-highlight', 'text-uppercase', 'fs-5');
     const removeButton = document.createElement('button');
     const separateLine = document.createElement('hr');
     bookContainer.id = `container${this.title}`;
     removeButton.id = `${this.title}`;
     removeButton.setAttribute('onclick', 'removeBook(this.id)');
     title.innerText = this.title;
-    bookAuthor.innerHTML = this.author;
+    bookAuthor.innerHTML = `By ${this.author}`;
     removeButton.innerHTML = 'Remove Book';
     removeButton.classList.add('m-1', 'text-white', 'btn', 'btn-danger', 'ml-auto', 'p-2', 'bd-highlight');
     const booksDiv = document.getElementById('books');
@@ -86,6 +98,7 @@ class Book {
     document.getElementById(`container${this.title}`).appendChild(separateLine);
     const newBook = new Book(this.title, this.author);
     BooksArray.Add(newBook);
+    changeBgColor(bookContainer);
     form.reset();
   }
 }
