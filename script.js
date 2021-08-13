@@ -77,7 +77,7 @@ const BooksArray = new BookArray();
 class Book {
   constructor() {
     this.title = document.getElementById('title').value;
-    this.author = document.getElementById('author'.value);
+    this.author = document.getElementById('author').value;
   }
 
   add() {
@@ -98,6 +98,7 @@ class Book {
     removeButton.setAttribute('onclick', 'removeBook(this.id)');
     title.innerText = this.title;
     bookAuthor.innerHTML = `By ${this.author}`;
+    console.log(this.author);
     removeButton.innerHTML = 'Remove Book';
     removeButton.classList.add('m-1', 'text-white', 'btn', 'btn-danger', 'ml-auto', 'p-2', 'bd-highlight');
     const booksDiv = document.getElementById('books');
