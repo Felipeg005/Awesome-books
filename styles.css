@@ -29,3 +29,7 @@ body {
   color: black;
   text-align: center;
 }
+
+.nav-item {
+  cursor: pointer;
+}

@@ -129,6 +129,26 @@ function removeBook(buttonId) {
 }
 removeBook();
 /* eslint max-classes-per-file: ["error", 2] */
+function show(sectionId) {
+  if(sectionId) {
+    const sectionArr = ['list-section', 'form-section', 'contact-section'];
+    let sectionToShow = document.getElementById(`${sectionId}`);
+    if(`${sectionToShow.className}`==='') {
+      return;
+      } else {
+      for (let i = 0; i < sectionArr.length; i += 1) {
+        sectionToShow = document.getElementById(`${sectionArr[i]}`);
+        if (`${sectionToShow.className}`=== '') {
+        sectionToShow.classList.toggle('d-none');
+        } else if((`${sectionToShow.className}`=== 'd-none') && (sectionArr[i]===sectionId)) {
+          sectionToShow = document.getElementById(`${sectionId}`);
+          sectionToShow.classList.toggle('d-none');
+        }
+      }
+    }
+  }
+}
+show('list-section');
 document.addEventListener('DOMContentLoaded', BooksArray.Get);
 form.addEventListener('submit', (...e) => {
   saveBook.add(...e);
