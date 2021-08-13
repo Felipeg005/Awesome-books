@@ -117,7 +117,6 @@ function removeBook(buttonId) {
     }
   }
 }
-
 removeBook();
 /* eslint max-classes-per-file: ["error", 2] */
 document.addEventListener('DOMContentLoaded', BooksArray.Get);
