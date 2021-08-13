@@ -66,8 +66,8 @@ const BooksArray = new BookArray();
 
 class Book {
   constructor() {
-    this.title = document.getElementById('title');
-    this.author = document.getElementById('author');
+    this.title = document.getElementById('title').value;
+    this.author = document.getElementById('author'.value);
   }
 
   add() {
