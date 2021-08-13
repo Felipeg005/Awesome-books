@@ -98,7 +98,6 @@ class Book {
     removeButton.setAttribute('onclick', 'removeBook(this.id)');
     title.innerText = this.title;
     bookAuthor.innerHTML = `By ${this.author}`;
-    console.log(this.author);
     removeButton.innerHTML = 'Remove Book';
     removeButton.classList.add('m-1', 'text-white', 'btn', 'btn-danger', 'ml-auto', 'p-2', 'bd-highlight');
     const booksDiv = document.getElementById('books');
