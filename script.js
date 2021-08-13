@@ -119,7 +119,7 @@ function removeBook(buttonId) {
 }
 removeBook();
 /* eslint max-classes-per-file: ["error", 2] */
-import { DateTime } from "https://moment.github.io/luxon/global/luxon.js";
+import { DateTime } from "https://moment.github.io/luxon/es6/luxon.js";
 const time = DateTime.now().toLocaleString(DateTime.DATETIME_MED);
 const timeContainer = document.querySelector('#dateTime');
 const date = document.createElement('p');
