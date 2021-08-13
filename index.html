@@ -4,16 +4,63 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <title>Awesome Books</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles.css">
   </head>
-
   <body>
-    <h1>Awesome Books</h1>
-    <div id="books"></div>
-    <form id="form">
-      <input id="title" type="text" placeholder="Title" />
-      <input id="author" type="text" placeholder="Author" />
-      <button id="add-button" type="submit">Add</button>
-    </form>
+    <header class ="header">
+      <nav class="container-l navbar navbar-expand-lg navbar-light bg-light p-3">
+        <h1 class="col-lg-9 h3">Awesome Books</h1>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse mr-auto col-lg-3 justify-content-around" id="navbarText">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a id="list-nav" onclick="show('list-section')" class="nav-link">List</a>
+            </li>
+            <li class="nav-item">
+              <a id="add-nav" onclick="show('form-section')" class=" nav-link">Add New</a>
+            </li>
+            <li class="nav-item">
+              <a id="contact-nav" onclick="show('contact-section')" class=" nav-link">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div id="date-time" class="pe-3 d-flex flex-column"></div>
+    </header>
+    <main>
+      <section id="list-section" class="d-none">
+      <h1 class="text-center mb-3 m-4">All Awesome Books</h1>
+      <div id="books" class="d-flex flex-column bd-highlight mb-3 vw-100"></div>
+      </section>
+        <section id="form-section" class="d-none">
+          <h1 class="text-center mb-3 m-4">Add New Book</h1>
+          <div  class="d-flex flex-column mt-5 align-items-center mt-1"></div>
+          <form id="form">
+            <input class="form-control d-inline" id="title" type="text" placeholder="Title" required />
+            <input class="form-control d-inline" id="author" type="text" placeholder="Author" required/>
+            <div class="d-flex justify-content-end"><button id="add-button" class='btn btn-success text-white w-25 border' type="submit">Add</button></div>
+          </form>
+        </div>
+        </section>
+        <section id="contact-section" class="d-none">
+          <h1 class="text-center mb-3 m-4">Contact</h1>
+          <ul class="contact list-group p-5 row align-items-center justify-content-center">
+            <li class="list-group-item h4 col">Do you have any questions or you just want to say hello?<br>
+            you can reach out to us!</li>
+            <li class="list-group-item h5 col">Our e-mail: awesomebooks@gmail.com</li>
+            <li class="list-group-item h5 col">Our phone number +1 (423) 7856</li>
+            <li class="list-group-item h5 col">Our adresse: MIAMI FL 320456 str road Drv-Okland</li>
+          </ul>
+        </section>
+    </main>
+    <footer class="footer d-flex justify-content-center text-center pt-4 pb-5 mt-2 vw-100">
+      © 2021 Copyright:
+      <a class="text-reset fw-bold" href="./index.html">Awesomebooks.demo</a>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@1.27.0/build/global/luxon.min.js"></script>
     <script src="./script.js"></script>
   </body>
 </html>
