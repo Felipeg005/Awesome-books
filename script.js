@@ -119,6 +119,14 @@ function removeBook(buttonId) {
 }
 removeBook();
 /* eslint max-classes-per-file: ["error", 2] */
+import { DateTime } from "https://moment.github.io/luxon/global/luxon.js";
+const time = DateTime.now().toLocaleString(DateTime.DATETIME_MED);
+const timeContainer = document.querySelector('#dateTime');
+const date = document.createElement('p');
+date.innerHTML = time;
+date.classList.add('float-right', 'me-5', 'my-3');
+timeContainer.appendChild(date);
+
 document.addEventListener('DOMContentLoaded', BooksArray.Get);
 form.addEventListener('submit', (...e) => {
   saveBook.add(...e);
